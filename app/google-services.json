@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "929377176959",
+    "project_id": "bokingfutsal-93f95",
+    "storage_bucket": "bokingfutsal-93f95.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:929377176959:android:b2a869f6282ea51f235e4a",
+        "android_client_info": {
+          "package_name": "com.example.bokingfutsal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "929377176959-6k6894vm80eat0fjjgmimqcj9o2hdbkt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAF_ZB8PNP6vJtRauzMc7YRvNyQIfsUICQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "929377176959-6k6894vm80eat0fjjgmimqcj9o2hdbkt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
