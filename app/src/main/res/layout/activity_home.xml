@@ -82,14 +82,14 @@
         app:layout_constraintTop_toTopOf="@id/textView3"/>
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_marginTop="51dp"
         android:layout_marginEnd="5dp"
         android:layout_marginRight="5dp"
         app:layout_constraintEnd_toStartOf="@id/guideline2"
         app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/ic_settings"/>
+        android:src="@drawable/ic_outline_account_circle_24"/>
     <SearchView
         android:id="@+id/searchView"
         android:layout_width="0dp"
@@ -103,18 +103,132 @@
         app:layout_constraintStart_toStartOf="@id/guideline"
         app:layout_constraintTop_toBottomOf="@id/textView3"
         tools:targetApi="lollipop"/>
+
+    <RelativeLayout
+        android:id="@+id/rc1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="26dp"
+        android:layout_marginEnd="26dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toStartOf="@id/guideline2"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@id/guideline"
+        app:layout_constraintTop_toBottomOf="@id/searchView"
+        >
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/car1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="7dp"
+            android:background="#fff"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="5dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:id="@+id/r1"
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:layout_weight="0.50"
+                        android:background="?attr/selectableItemBackground"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:id="@+id/panduan"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_centerHorizontal="true"
+                            android:src="@drawable/ic_baseline_attractions_24" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/panduan"
+                            android:gravity="center"
+                            android:text="menu 1" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/r2"
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:layout_weight="0.50"
+                        android:background="?attr/selectableItemBackground"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:id="@+id/berita"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_centerHorizontal="true"
+                            android:src="@drawable/ic_baseline_attractions_24" />
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/berita"
+                            android:gravity="center"
+                            android:text="menu 2" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/r3"
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:layout_weight="0.50"
+                        android:background="?attr/selectableItemBackground"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:id="@+id/keluar"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_centerHorizontal="true"
+                            android:src="@drawable/ic_baseline_attractions_24" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/keluar"
+                            android:gravity="center"
+                            android:text="menu 3" />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+
     <androidx.viewpager2.widget.ViewPager2
         android:layout_width="match_parent"
         android:id="@+id/viewpager2"
         android:clipToPadding="false"
-        android:layout_marginTop="8dp"
         android:paddingStart="40dp"
         android:paddingEnd="40dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toStartOf="@id/guideline2"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@id/guideline"
-        app:layout_constraintTop_toBottomOf="@id/searchView"
+        app:layout_constraintTop_toBottomOf="@id/rc1"
         />
     <ScrollView
         android:layout_width="0dp"

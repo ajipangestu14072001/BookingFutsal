@@ -18,6 +18,7 @@ import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.SearchView;
 import android.widget.TextView;
 
@@ -31,6 +32,7 @@ public class HomeActivity extends AppCompatActivity {
     private Handler handler = new Handler();
     CardView cardView, cardView2, cardView3;
     ImageView imageView;
+    RelativeLayout relativeLayout;
     TextView textView, textView2, textView3, textView4, textView5;
     SearchView searchView;
     Animation anim_from_button, anim_from_top, anim_from_left;
@@ -50,6 +52,8 @@ public class HomeActivity extends AppCompatActivity {
 
         imageAdapter = new ImageAdapter(imageList, viewPager2);
         viewPager2.setAdapter(imageAdapter);
+
+        relativeLayout = findViewById(R.id.rc1);
 
         viewPager2.setOffscreenPageLimit(3);
         viewPager2.setClipChildren(false);
@@ -90,6 +94,7 @@ public class HomeActivity extends AppCompatActivity {
         anim_from_top = AnimationUtils.loadAnimation(this, R.anim.anim_from_top);
         anim_from_left = AnimationUtils.loadAnimation(this, R.anim.anim_from_left);
 
+        relativeLayout.setAnimation(anim_from_button);
         cardView.setAnimation(anim_from_button);
         viewPager2.setAnimation(anim_from_button);
         cardView2.setAnimation(anim_from_button);
