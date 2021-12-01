@@ -14,13 +14,10 @@ private Button button;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         button = findViewById(R.id.btn_login);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                startActivity(intent);
-                finish();
-            }
+        button.setOnClickListener(v -> {
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
         });
     }
 }

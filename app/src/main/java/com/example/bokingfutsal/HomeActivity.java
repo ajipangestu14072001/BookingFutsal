@@ -36,6 +36,7 @@ public class HomeActivity extends AppCompatActivity {
     TextView textView, textView2, textView3, textView4, textView5;
     SearchView searchView;
     Animation anim_from_button, anim_from_top, anim_from_left;
+
     @TargetApi(Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,13 +62,10 @@ public class HomeActivity extends AppCompatActivity {
         viewPager2.getChildAt(0).setOverScrollMode(RecyclerView.OVER_SCROLL_NEVER);
         CompositePageTransformer compositePageTransformer = new CompositePageTransformer();
         compositePageTransformer.addTransformer(new MarginPageTransformer(40));
-        compositePageTransformer.addTransformer(new ViewPager2.PageTransformer() {
-            @Override
-            public void transformPage(@NonNull View page, float position) {
-                float r = 1 - Math.abs(position);
-                page.setScaleX(0.90f + r * 0.25f);
+        compositePageTransformer.addTransformer((page, position) -> {
+            float r = 1 - Math.abs(position);
+            page.setScaleX(0.90f + r * 0.25f);
 
-            }
         });
         viewPager2.setPageTransformer(compositePageTransformer);
         viewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
@@ -75,7 +73,7 @@ public class HomeActivity extends AppCompatActivity {
             public void onPageSelected(int position) {
                 super.onPageSelected(position);
                 handler.removeCallbacks(runnable);
-                handler.postDelayed(runnable,2000);
+                handler.postDelayed(runnable, 2000);
             }
         });
 
@@ -107,12 +105,9 @@ public class HomeActivity extends AppCompatActivity {
         textView5.setAnimation(anim_from_top);
         searchView.setAnimation(anim_from_left);
 
-        cardView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent secondActivity = new Intent(HomeActivity.this, DetailActivity.class);
-                startActivity(secondActivity);
-            }
+        cardView.setOnClickListener(view -> {
+            Intent secondActivity = new Intent(HomeActivity.this, DetailActivity.class);
+            startActivity(secondActivity);
         });
         getWindow().setFlags(
                 WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
@@ -128,10 +123,11 @@ public class HomeActivity extends AppCompatActivity {
         );
 
     }
+
     private Runnable runnable = new Runnable() {
         @Override
         public void run() {
-            viewPager2.setCurrentItem(viewPager2.getCurrentItem()+1);
+            viewPager2.setCurrentItem(viewPager2.getCurrentItem() + 1);
         }
     };
 
@@ -144,6 +140,6 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     public void onResume() {
         super.onResume();
-        handler.postDelayed(runnable,2000);
+        handler.postDelayed(runnable, 2000);
     }
 }

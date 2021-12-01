@@ -15,11 +15,13 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+
 public class DetailActivity extends AppCompatActivity {
     ImageView second_back_arrow, second_arrow_up;
     TextView second_title, second_subtitle, second_rating_number, second_rating_number2, more_details;
     RatingBar second_ratingbar;
     Animation from_left, from_right, from_bottom;
+
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,12 +37,9 @@ public class DetailActivity extends AppCompatActivity {
         more_details = findViewById(R.id.more_details);
         second_ratingbar = findViewById(R.id.second_ratingbar);
 
-        second_back_arrow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(DetailActivity.this, HomeActivity.class);
-                startActivity(intent);
-            }
+        second_back_arrow.setOnClickListener(view -> {
+            Intent intent = new Intent(DetailActivity.this, HomeActivity.class);
+            startActivity(intent);
         });
         getWindow().setFlags(
                 WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
@@ -65,16 +64,12 @@ public class DetailActivity extends AppCompatActivity {
         second_rating_number2.setAnimation(from_right);
         second_arrow_up.setAnimation(from_bottom);
         more_details.setAnimation(from_bottom);
-        second_arrow_up.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(DetailActivity.this, ShowActivity.class);
-                Pair[] pairs = new Pair[1];
-                pairs[0] = new Pair<View, String>(second_arrow_up, "background_image_transition");
-                ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(DetailActivity.this, pairs);
-                startActivity(intent, options.toBundle());
-            }
+        second_arrow_up.setOnClickListener(view -> {
+            Intent intent = new Intent(DetailActivity.this, ShowActivity.class);
+            Pair[] pairs = new Pair[1];
+            pairs[0] = new Pair<View, String>(second_arrow_up, "background_image_transition");
+            ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(DetailActivity.this, pairs);
+            startActivity(intent, options.toBundle());
         });
     }
 }

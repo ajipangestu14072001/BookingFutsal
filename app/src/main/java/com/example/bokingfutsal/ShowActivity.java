@@ -42,16 +42,12 @@ public class ShowActivity extends AppCompatActivity {
                         | View.SYSTEM_UI_FLAG_FULLSCREEN
                         | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
         );
-        down_arrow.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ShowActivity.this, DetailActivity.class);
-                Pair[] pairs = new Pair[1];
-                pairs[0] = new Pair<View, String>(down_arrow, "background_image_transition");
-                ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(ShowActivity.this, pairs);
-                startActivity(intent, options.toBundle());
-            }
+        down_arrow.setOnClickListener(view -> {
+            Intent intent = new Intent(ShowActivity.this, DetailActivity.class);
+            Pair[] pairs = new Pair[1];
+            pairs[0] = new Pair<View, String>(down_arrow, "background_image_transition");
+            ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(ShowActivity.this, pairs);
+            startActivity(intent, options.toBundle());
         });
     }
 }
