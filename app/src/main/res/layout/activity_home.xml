@@ -81,7 +81,7 @@
         app:layout_constraintStart_toEndOf="@id/textView3"
         app:layout_constraintTop_toTopOf="@id/textView3"/>
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/account"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginTop="51dp"

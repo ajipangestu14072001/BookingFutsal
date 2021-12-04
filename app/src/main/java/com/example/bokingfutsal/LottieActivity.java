@@ -14,13 +14,10 @@ private Button button;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lottie);
         button = findViewById(R.id.btnloti);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(LottieActivity.this, HomeActivity.class);
-                startActivity(intent);
-                finish();
-            }
+        button.setOnClickListener(v -> {
+            Intent intent = new Intent(LottieActivity.this, HomeActivity.class);
+            startActivity(intent);
+            finish();
         });
     }
 }

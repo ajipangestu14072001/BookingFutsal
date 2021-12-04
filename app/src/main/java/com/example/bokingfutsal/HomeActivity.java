@@ -22,6 +22,8 @@ import android.widget.RelativeLayout;
 import android.widget.SearchView;
 import android.widget.TextView;
 
+import com.google.firebase.firestore.auth.User;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,7 +33,7 @@ public class HomeActivity extends AppCompatActivity {
     private ImageAdapter imageAdapter;
     private Handler handler = new Handler();
     CardView cardView, cardView2, cardView3;
-    ImageView imageView;
+    ImageView imageView, imageViewAccount;
     RelativeLayout relativeLayout;
     TextView textView, textView2, textView3, textView4, textView5;
     SearchView searchView;
@@ -42,6 +44,7 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
 
         viewPager2 = findViewById(R.id.viewpager2);
         imageList = new ArrayList<>();
@@ -80,7 +83,7 @@ public class HomeActivity extends AppCompatActivity {
         cardView = findViewById(R.id.cardView);
         cardView2 = findViewById(R.id.cardView2);
         cardView3 = findViewById(R.id.cardView3);
-        imageView = findViewById(R.id.imageView);
+        imageViewAccount = findViewById(R.id.account);
         textView = findViewById(R.id.firstText);
         textView2 = findViewById(R.id.textView);
         textView3 = findViewById(R.id.textView2);
@@ -97,13 +100,17 @@ public class HomeActivity extends AppCompatActivity {
         viewPager2.setAnimation(anim_from_button);
         cardView2.setAnimation(anim_from_button);
         cardView3.setAnimation(anim_from_button);
-        imageView.setAnimation(anim_from_top);
         textView.setAnimation(anim_from_top);
         textView2.setAnimation(anim_from_top);
         textView3.setAnimation(anim_from_top);
         textView4.setAnimation(anim_from_top);
         textView5.setAnimation(anim_from_top);
         searchView.setAnimation(anim_from_left);
+
+        imageViewAccount.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeActivity.this, UserActivity.class);
+            startActivity(intent);
+        });
 
         cardView.setOnClickListener(view -> {
             Intent secondActivity = new Intent(HomeActivity.this, DetailActivity.class);
