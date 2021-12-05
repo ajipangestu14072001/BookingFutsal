@@ -13,6 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BokingFutsal">
         <activity
+            android:name=".LapanganActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LostActivity"
+            android:exported="false" />
+        <activity
             android:name=".LottieActivity"
             android:exported="false" />
         <activity

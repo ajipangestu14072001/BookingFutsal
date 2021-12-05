@@ -3,12 +3,14 @@ package com.example.bokingfutsal;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.CompositePageTransformer;
 import androidx.viewpager2.widget.MarginPageTransformer;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.annotation.TargetApi;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -22,6 +24,11 @@ import android.widget.RelativeLayout;
 import android.widget.SearchView;
 import android.widget.TextView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.auth.User;
 
 import java.util.ArrayList;
@@ -32,9 +39,13 @@ public class HomeActivity extends AppCompatActivity {
     private List<Image> imageList;
     private ImageAdapter imageAdapter;
     private Handler handler = new Handler();
-    CardView cardView, cardView2, cardView3;
+    RecyclerView.Adapter adapter;
+    List<Lapangan> list = new ArrayList();
+    LinearLayoutManager linearLayoutManager;
+    DatabaseReference databaseReference;
+    ProgressDialog progressDialog;
+    RecyclerView recyclerView;
     ImageView imageView, imageViewAccount;
-    RelativeLayout relativeLayout;
     TextView textView, textView2, textView3, textView4, textView5;
     SearchView searchView;
     Animation anim_from_button, anim_from_top, anim_from_left;
@@ -57,7 +68,6 @@ public class HomeActivity extends AppCompatActivity {
         imageAdapter = new ImageAdapter(imageList, viewPager2);
         viewPager2.setAdapter(imageAdapter);
 
-        relativeLayout = findViewById(R.id.rc1);
 
         viewPager2.setOffscreenPageLimit(3);
         viewPager2.setClipChildren(false);
@@ -80,9 +90,6 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        cardView = findViewById(R.id.cardView);
-        cardView2 = findViewById(R.id.cardView2);
-        cardView3 = findViewById(R.id.cardView3);
         imageViewAccount = findViewById(R.id.account);
         textView = findViewById(R.id.firstText);
         textView2 = findViewById(R.id.textView);
@@ -95,11 +102,7 @@ public class HomeActivity extends AppCompatActivity {
         anim_from_top = AnimationUtils.loadAnimation(this, R.anim.anim_from_top);
         anim_from_left = AnimationUtils.loadAnimation(this, R.anim.anim_from_left);
 
-        relativeLayout.setAnimation(anim_from_button);
-        cardView.setAnimation(anim_from_button);
         viewPager2.setAnimation(anim_from_button);
-        cardView2.setAnimation(anim_from_button);
-        cardView3.setAnimation(anim_from_button);
         textView.setAnimation(anim_from_top);
         textView2.setAnimation(anim_from_top);
         textView3.setAnimation(anim_from_top);
@@ -112,10 +115,6 @@ public class HomeActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        cardView.setOnClickListener(view -> {
-            Intent secondActivity = new Intent(HomeActivity.this, DetailActivity.class);
-            startActivity(secondActivity);
-        });
         getWindow().setFlags(
                 WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
                 WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
@@ -128,6 +127,37 @@ public class HomeActivity extends AppCompatActivity {
                         | View.SYSTEM_UI_FLAG_FULLSCREEN
                         | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
         );
+
+        this.recyclerView = (RecyclerView) findViewById(R.id.recyclerViewuser);
+        LinearLayoutManager linearLayoutManager2 = new LinearLayoutManager(this);
+        this.linearLayoutManager = linearLayoutManager2;
+        linearLayoutManager2.setReverseLayout(true);
+        this.linearLayoutManager.setStackFromEnd(true);
+        this.recyclerView.setLayoutManager(this.linearLayoutManager);
+        this.recyclerView.setHasFixedSize(true);
+        ProgressDialog progressDialog2 = new ProgressDialog(this);
+        this.progressDialog = progressDialog2;
+        progressDialog2.setMessage("Loading Data.");
+        this.progressDialog.show();
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Lappangan");
+        this.databaseReference = reference;
+        reference.addValueEventListener(new ValueEventListener() {
+
+            @Override // com.google.firebase.database.ValueEventListener
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot dataSnapshot2 : dataSnapshot.getChildren()) {
+                    HomeActivity.this.list.add((Lapangan) dataSnapshot2.getValue(Lapangan.class));
+                }
+                HomeActivity.this.adapter = new RecyclerViewAdapter(HomeActivity.this.getApplicationContext(), HomeActivity.this.list);
+                HomeActivity.this.recyclerView.setAdapter(HomeActivity.this.adapter);
+                HomeActivity.this.progressDialog.dismiss();
+            }
+
+            @Override // com.google.firebase.database.ValueEventListener
+            public void onCancelled(DatabaseError databaseError) {
+                HomeActivity.this.progressDialog.dismiss();
+            }
+        });
 
     }
 

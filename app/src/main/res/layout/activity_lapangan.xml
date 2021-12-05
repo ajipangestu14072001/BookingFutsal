@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LapanganActivity">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:id="@+id/r1">
+
+        <ImageView
+            android:id="@+id/imglap"
+            android:layout_centerHorizontal="true"
+            android:layout_width="300dp"
+            android:layout_height="300dp" />
+
+        <Button
+            android:id="@+id/btngal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/imglap"
+            android:text="Pilih Foto"/>
+
+        <EditText
+            android:id="@+id/judul"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btngal"
+            android:hint="Nama Lapangan" />
+
+        <EditText
+            android:id="@+id/des"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/judul"
+            android:hint="Deskripsi" />
+
+        <EditText
+            android:id="@+id/fasilitas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/des"
+            android:hint="Fasilitas" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Harga"
+            android:id="@+id/harga"
+            android:layout_below="@id/fasilitas"
+            />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnupload"
+            android:layout_below="@id/harga"
+            android:text="Upload"/>
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -44,62 +44,24 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <TextView
-                android:id="@+id/third_title"
+                android:id="@+id/title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/open_sans_extra_bold"
                 android:text="Lorem ipsum dolor sit amet"
                 android:textColor="@color/colorPrimary"
                 android:textSize="24sp" />
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="16dp"
-                android:orientation="horizontal">
-                <RatingBar
-                    android:id="@+id/third_ratingbar"
-                    style="?android:attr/ratingBarStyleSmall"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:max="5"
-                    android:numStars="5"
-                    android:progressTint="@color/colorAccent"
-                    android:rating="4.5"
-                    android:stepSize="0.5"
-                    tools:targetApi="lollipop" />
-                <TextView
-                    android:id="@+id/third_rating_number"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:fontFamily="@font/open_sans_bold"
-                    android:text="4.75"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="15sp" />
-                <TextView
-                    android:id="@+id/third_rating_number2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginLeft="5dp"
-                    android:fontFamily="@font/open_sans_light"
-                    android:text="(510)"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="15sp" />
-            </LinearLayout>
             <TextView
-                android:id="@+id/about"
+                android:id="@+id/destext1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
                 android:fontFamily="@font/open_sans_bold"
-                android:text="Content"
+                android:text="Deskripsi"
                 android:textColor="@color/colorPrimary"
                 android:textSize="15sp" />
             <TextView
-                android:id="@+id/about_text"
+                android:id="@+id/destext"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -114,11 +76,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:fontFamily="@font/open_sans_bold"
-                android:text="Content"
+                android:text="Biaya"
                 android:textColor="@color/colorPrimary"
                 android:textSize="15sp" />
             <TextView
-                android:id="@+id/venue_type_text"
+                android:id="@+id/costtext"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -133,11 +95,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:fontFamily="@font/open_sans_bold"
-                android:text="Content"
+                android:text="Fasilitas"
                 android:textColor="@color/colorPrimary"
                 android:textSize="15sp" />
             <TextView
-                android:id="@+id/type_of_view_text"
+                android:id="@+id/fasilitastext"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"

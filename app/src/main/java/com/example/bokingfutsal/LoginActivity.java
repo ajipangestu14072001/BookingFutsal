@@ -64,7 +64,7 @@ private Button button1, button2;
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
                                 int userType = snapshot.getValue(Integer.class);
                                 if (userType == 0){
-                                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                    Intent intent = new Intent(LoginActivity.this, AdminActivity.class);
                                     startActivity(intent);
                                     finish();
                                     Toast.makeText(getApplicationContext(),"ADMIN", Toast.LENGTH_SHORT).show();
